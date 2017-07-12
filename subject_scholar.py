@@ -6,12 +6,13 @@ class Subject_Scholar(object):
     """ A topic analyzer that finds hierarchical subject matter motifs in natural language.
 
     """
-    def __init__(self, criterion):
+    def __init__(self, num_topics):
+        # num_topics = auto or preset value (?)
         pass
 
     def train(self, training_data):
+        # Assign convolutional outputs to a number of final categories, using the mutual information content with smooth priors to dynamically assign n-grams from samples to topic categories. See "Discriminative Neural Topic Models" by Pandey and Dukkipati for more on this criterion.
         pass
 
     def analyse(self, data):
         pass
-    
