@@ -12,11 +12,11 @@ class Subject_Scholar(object):
         pass
 
     def train(self, training_data, n_gram_size):
-        # Assign convolutional outputs to a number of final categories, using the mutual information content with smooth priors to dynamically assign n-grams from samples to topic categories. See "Discriminative Neural Topic Models" by Pandey and Dukkipati for more on this criterion.
+        # Assign words and phrases to a number of final categories, using the mutual information content with smooth priors to dynamically assign n-grams from samples to topic categories. See "Discriminative Neural Topic Models" by Pandey and Dukkipati for more on this criterion.
 
         # For word in training_data, add each singleton to our dataframe of inputs
 
-        # For each level of n-gram above 1, systematically add each possible n-gram to our dataframe of inputs
+        # For each level of n-gram above 1, systematically add each possible n-gram to our dataframe of inputs. We form n-grams up to the size specified.
 
         # Try a number of different synthetic categories, and compare how well each number does for the number or diversity of words we have.
 
@@ -30,5 +30,7 @@ class Subject_Scholar(object):
     def assign_synthetic_categories(num_categories):
         # use 'num_categories' number of synthetic categories to label the data, optimize the assignment, and report the objective function score.
 
-        # We form n-grams up to the size specified. We use the objective function F(theta) = H(Z|X) + KL(P_Z_j||P_Z; X) - H(Pbar) from Pandey and Dukkipati to assign n-grams to categories. Theta is an assignment of Z to X, F is calculated for all words and all possible assignments. We then use CNN's to perform supervised learning on n-grams and categories, training the CNN to develop appropriate filters for identifying topics from words and n-grams.
+        # Use the objective function F(theta) = H(Z|X) + KL(P_Z_j||P_Z; X) - H(Pbar) from Pandey and Dukkipati to assign n-grams to categories. Theta is an assignment of Z to X, F is calculated for all words and all possible assignments. We then use CNN's to perform supervised learning on n-grams and categories, training the CNN to develop appropriate filters for identifying topics from words and n-grams.
+
+        # TODO: Is there an extant implementation for assigning n-grams to synthetic categories?
         pass
