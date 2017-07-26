@@ -20,7 +20,13 @@ class Subject_Scholar(object):
 
         # Try a number of different synthetic categories, and compare how well each number does for the number or diversity of words we have.
 
+        # We can use something like LSA or SVD in sklearn to find topics through decomposition. We can try different thresholds to satisfy some criterion.
 
+        # Once we have assigned topics to n-grams and documents, we have a supervised learning problem
+        # We ened to vectorize our text.
+        model = Sequential()
+        # Some CNN layers would be good.
+        # A final softmax layer for probabilistic predictions.
         pass
 
     def analyse(self, data):
