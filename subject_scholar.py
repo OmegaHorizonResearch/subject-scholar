@@ -3,6 +3,8 @@
 # Implementation: use CNN's and a custom information criterion to perform non-specific supervised learning. A model for extracting topics at various levels of linguistic hierarchy is selected and used to analyse bodies of text to determine their topical content. Model selection is a key process of the training phase, as not only do multiple models need to be trained, but compared on the basis of their statistical merits.
 import keras, pandas
 
+from sklearn.decomposition import TruncatedSVD
+
 class Subject_Scholar(object):
     """ A topic analyzer that finds hierarchical subject matter motifs in natural language.
 
@@ -39,4 +41,6 @@ class Subject_Scholar(object):
         # Use the objective function F(theta) = H(Z|X) + KL(P_Z_j||P_Z; X) - H(Pbar) from Pandey and Dukkipati to assign n-grams to categories. Theta is an assignment of Z to X, F is calculated for all words and all possible assignments. We then use CNN's to perform supervised learning on n-grams and categories, training the CNN to develop appropriate filters for identifying topics from words and n-grams.
 
         # TODO: Is there an extant implementation for assigning n-grams to synthetic categories?
+        svd = TruncatedSVD(n_components = num_categories)
+        svd.fit
         pass
