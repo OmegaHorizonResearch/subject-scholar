@@ -11,9 +11,11 @@ class Subject_Scholar(object):
     """
     def __init__(self, num_topics):
         # num_topics = auto or preset value (?)
+        self.SVDs = {}
         pass
 
-    def train(self, training_data, n_gram_size):
+    def train(self, training_data, n_gram_size, num_cats):
+        # num_cats should be a list of category sizes to try.
         # Assign words and phrases to a number of final categories, using the mutual information content with smooth priors to dynamically assign n-grams from samples to topic categories. See "Discriminative Neural Topic Models" by Pandey and Dukkipati for more on this criterion.
 
         # For word in training_data, add each singleton to our dataframe of inputs
@@ -21,8 +23,10 @@ class Subject_Scholar(object):
         # For each level of n-gram above 1, systematically add each possible n-gram to our dataframe of inputs. We form n-grams up to the size specified.
 
         # Try a number of different synthetic categories, and compare how well each number does for the number or diversity of words we have.
-
+        self.X = training_data
         # We can use something like LSA or SVD in sklearn to find topics through decomposition. We can try different thresholds to satisfy some criterion.
+        for size in num_cats:
+            self.assign_synthetic_categories(size)
 
         # Once we have assigned topics to n-grams and documents, we have a supervised learning problem
         # We ened to vectorize our text.
@@ -42,5 +46,6 @@ class Subject_Scholar(object):
 
         # TODO: Is there an extant implementation for assigning n-grams to synthetic categories?
         svd = TruncatedSVD(n_components = num_categories)
-        svd.fit
+        svd.fit_transform(self.X)
+        self.SVDs[num_categories] = svd
         pass
