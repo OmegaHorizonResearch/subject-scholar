@@ -15,6 +15,7 @@ class Subject_Scholar(object):
         pass
 
     def train(self, training_data, n_gram_size, num_cats):
+        # training_data should be vectorized text data.
         # num_cats should be a list of category sizes to try.
         # Assign words and phrases to a number of final categories, using the mutual information content with smooth priors to dynamically assign n-grams from samples to topic categories. See "Discriminative Neural Topic Models" by Pandey and Dukkipati for more on this criterion.
 
@@ -29,10 +30,11 @@ class Subject_Scholar(object):
             self.assign_synthetic_categories(size)
 
         # Once we have assigned topics to n-grams and documents, we have a supervised learning problem
-        # We ened to vectorize our text.
+        # We need to vectorize our text.
         model = Sequential()
         # Some CNN layers would be good.
         # A final softmax layer for probabilistic predictions.
+        self.model = model
         pass
 
     def analyse(self, data):
@@ -49,3 +51,6 @@ class Subject_Scholar(object):
         svd.fit_transform(self.X)
         self.SVDs[num_categories] = svd
         pass
+
+    def objective_score(grams, topics):
+        # go through the grams and their assigned topics and use an objective function to assess how good or appropriate the whole assignment is. 
