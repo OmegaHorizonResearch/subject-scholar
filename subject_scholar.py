@@ -12,6 +12,7 @@ class Subject_Scholar(object):
     def __init__(self, num_topics):
         # num_topics = auto or preset value (?)
         self.SVDs = {}
+        self.scores = {}
         pass
 
     def train(self, training_data, n_gram_size, num_cats):
@@ -46,11 +47,14 @@ class Subject_Scholar(object):
 
         # Use the objective function F(theta) = H(Z|X) + KL(P_Z_j||P_Z; X) - H(Pbar) from Pandey and Dukkipati to assign n-grams to categories. Theta is an assignment of Z to X, F is calculated for all words and all possible assignments. We then use CNN's to perform supervised learning on n-grams and categories, training the CNN to develop appropriate filters for identifying topics from words and n-grams.
 
-        # TODO: Is there an extant implementation for assigning n-grams to synthetic categories?
         svd = TruncatedSVD(n_components = num_categories)
         svd.fit_transform(self.X)
         self.SVDs[num_categories] = svd
         pass
 
-    def objective_score(grams, topics):
-        # go through the grams and their assigned topics and use an objective function to assess how good or appropriate the whole assignment is. 
+    def objective_score(grams, topics, SVD, num_categories):
+        # go through the grams and their assigned topics and use an objective function to assess how good or appropriate the whole assignment is. We can use scipy.stats.entropy to do the entropy calculations.
+        objective_score = 0
+        # TODO: Calculate objective score for the chosen SVD, num_categories, and assignments.
+        self.scores[num_categories] = objective_score
+        return objective_score
