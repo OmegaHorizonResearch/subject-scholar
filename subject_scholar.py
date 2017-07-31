@@ -10,14 +10,16 @@ class Subject_Scholar(object):
 
     """
     def __init__(self, num_topics):
-        # num_topics = auto or preset value (?)
+        # Attribute to hold all Singular Value Decomposition transformers.
         self.SVDs = {}
+        # Attribute to hold the objective score for each number of categories.
         self.scores = {}
         pass
 
-    def train(self, training_data, n_gram_size, num_cats):
+    def train(self, training_data, n_gram_size, num_categories):
         # training_data should be vectorized text data.
         # num_cats should be a list of category sizes to try.
+
         # Assign words and phrases to a number of final categories, using the mutual information content with smooth priors to dynamically assign n-grams from samples to topic categories. See "Discriminative Neural Topic Models" by Pandey and Dukkipati for more on this criterion.
 
         # For word in training_data, add each singleton to our dataframe of inputs
@@ -27,7 +29,7 @@ class Subject_Scholar(object):
         # Try a number of different synthetic categories, and compare how well each number does for the number or diversity of words we have.
         self.X = training_data
         # We can use something like LSA or SVD in sklearn to find topics through decomposition. We can try different thresholds to satisfy some criterion.
-        for size in num_cats:
+        for size in num_categories:
             self.assign_synthetic_categories(size)
 
         # Once we have assigned topics to n-grams and documents, we have a supervised learning problem
