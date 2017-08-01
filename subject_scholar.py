@@ -16,27 +16,35 @@ class Subject_Scholar(object):
         self.scores = {}
         pass
 
-    def train(self, training_data, n_gram_size, num_categories):
+    def train(self, training_data, n_gram_sizes, num_categories):
         # training_data should be vectorized text data.
         # num_cats should be a list of category sizes to try.
-
+        """
+        Section: Building N-Grams from a Corpus
+        """
         # Assign words and phrases to a number of final categories, using the mutual information content with smooth priors to dynamically assign n-grams from samples to topic categories. See "Discriminative Neural Topic Models" by Pandey and Dukkipati for more on this criterion.
 
         # For word in training_data, add each singleton to our dataframe of inputs
 
         # For each level of n-gram above 1, systematically add each possible n-gram to our dataframe of inputs. We form n-grams up to the size specified.
-
+        """
+        Section: Obtaining an Ideal Synthetic Topic Assignment.
+        """
         # Try a number of different synthetic categories, and compare how well each number does for the number or diversity of words we have.
         self.X = training_data
         # We can use something like LSA or SVD in sklearn to find topics through decomposition. We can try different thresholds to satisfy some criterion.
         for size in num_categories:
             self.assign_synthetic_categories(size)
 
-        # Once we have assigned topics to n-grams and documents, we have a supervised learning problem
+        """
+        Section: Training a CNN to Model Topics in Text.
+        """
+        # Once we have assigned topics to n-grams and documents, we have a supervised learning problem.
         # We need to vectorize our text.
         model = Sequential()
         # Some CNN layers would be good.
         # A final softmax layer for probabilistic predictions.
+        # We can save the final model both with and without the final softmax layer.
         self.model = model
         pass
 
