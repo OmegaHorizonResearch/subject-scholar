@@ -17,7 +17,7 @@ class Subject_Scholar(object):
         pass
 
     def train(self, training_data, n_gram_sizes, num_categories):
-        # training_data should be vectorized text data.
+        # training_data should be raw text data.
         # num_cats should be a list of category sizes to try.
         """
         Section: Building N-Grams from a Corpus
@@ -68,3 +68,6 @@ class Subject_Scholar(object):
         # TODO: Calculate objective score for the chosen SVD, num_categories, and assignments.
         self.scores[num_categories] = objective_score
         return objective_score
+
+    def process_text(text):
+        # Transforms text into vectors of vectors. Uses a letter-based scheme instead of a fixed vocabulary.
