@@ -69,5 +69,5 @@ class Subject_Scholar(object):
         self.scores[num_categories] = objective_score
         return objective_score
 
-    def process_text(text):
+    def vectorize_text(text):
         # Transforms text into vectors of vectors. Uses a letter-based scheme instead of a fixed vocabulary.
