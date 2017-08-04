@@ -17,8 +17,16 @@ class Subject_Scholar(object):
         pass
 
     def train(self, training_data, n_gram_sizes, num_categories):
-        # training_data should be raw text data.
-        # num_cats should be a list of category sizes to try.
+        """
+        Train first tests various assignments of artificial topics to n-grams. An ideal assignment is chosen on the basis of an objective function. This ideal assignment serves as data inputs and target labels for a supervised learning problem. A CNN is used to solve the supervised learning problem, finding hierarchical motifs for contributing to identification of topics.
+
+        Inputs:
+        training_data: strings or dataframes (TBD) of raw text data to train on
+        n_gram_sizes: list, a list of values for n-gram sizes to fit to topics and to train upon.
+        
+
+        """
+
         """
         Section: Building N-Grams from a Corpus
         """
