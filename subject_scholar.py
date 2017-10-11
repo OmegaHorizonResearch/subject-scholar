@@ -44,7 +44,7 @@ class Subject_Scholar(object):
         """
         # Try a number of different synthetic categories, and compare how well each number does for the number or diversity of words we have.
         self.X = training_data
-        # We can use something like LSA or SVD in sklearn to find topics through decomposition. We can try different thresholds to satisfy some criterion.
+        # We can use something like LSA or SVD (or LDA) in sklearn to find topics through decomposition. We can try different thresholds to satisfy some criterion.
         for size in num_categories:
             self.assign_synthetic_categories(size)
 
